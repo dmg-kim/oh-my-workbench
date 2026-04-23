@@ -1,0 +1,31 @@
+[package]
+name = "oh-my-workbench"
+version = "0.1.0"
+description = "Windows용 개인 워크벤치 런처 — 웹 URL과 로컬 프로그램을 카테고리별 한 화면에서 한 번의 클릭으로 실행"
+authors = ["dmg-kim <dmg.kim@samsung.com>"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+# The `_lib` suffix may seem redundant but it is necessary
+# to make the lib name unique and wouldn't conflict with the bin name.
+# This seems to be only an issue on Windows, see https://github.com/rust-lang/cargo/issues/8519
+name = "oh_my_workbench_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-opener = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+atomicwrites = "0.4"
+png = "0.17"
+base64 = "0.22"
+chrono = { version = "0.4", default-features = false, features = ["clock"] }
+tauri-plugin-global-shortcut = "2"
+log = "0.4"
+
